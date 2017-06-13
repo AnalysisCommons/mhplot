@@ -1,0 +1,164 @@
+{
+  "name": "mhplot",
+  "title": "Manhattan Plot",
+  "summary": "Generates a Manhattan plot from the data provided. This app acts as a wrapper for the 'manhattan' function from the R package 'qqman'. Turner, S.D. qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. biorXiv DOI: 10.1101/005165 (2014).",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "datafile",
+      "label": "Required: data files",
+      "class": "array:file",
+      "optional": false
+    },
+    {
+      "name": "snpinfofile",
+      "label": "Optional: SNPInfo files",
+      "class": "array:file",
+      "optional": true
+    },
+    {
+      "name": "label",
+      "label": "Filename prefix label",
+      "class": "string",
+      "optional": true,
+      "default": "results"
+    },
+    {
+      "name": "output_type",
+      "label": "The filetype of the output plot. Must choose 'png', 'tiff', or 'pdf'.",
+      "class": "string",
+      "optional": true,
+      "default": "png",
+      "choices": [
+        "png",
+        "tiff",
+        "pdf"
+      ]
+    },
+    {
+      "name": "p_col",
+      "label": "P-value column name. Must be the same if plotting multiple datasets (e.g. merging chromosomes).",
+      "class": "string",
+      "optional": true,
+      "default": "p"
+    },
+    {
+      "name": "gene_col",
+      "label": "Gene column name. Not currently used.",
+      "class": "string",
+      "optional": true,
+      "default": "gene"
+    },
+    {
+      "name": "chr_col",
+      "label": "Chromosome column name. If missing, script will derive it from snpname if the format is CHR:POS.",
+      "class": "string",
+      "optional": true,
+      "default": "chr"
+    },
+    {
+      "name": "pos_col",
+      "label": "Position column name. If missing, script will derive it from snpname if the format is CHR:POS.",
+      "class": "string",
+      "optional": true,
+      "default": "pos"
+    },
+    {
+      "name": "snp_col",
+      "label": "SNPname column name.",
+      "class": "string",
+      "optional": true,
+      "default": "Name"
+    },
+    {
+      "name": "chr_labels",
+      "label": "chr_labels: A character vector equal to the number of chromosomes specifying the chromosome labels (e.g., 'c(1:22, 'X', 'Y', 'MT')').",
+      "class": "string",
+      "optional": true,
+      "default": "NULL"
+    },
+    {
+      "name": "filter",
+      "label": "filter: Filtering string to subset the data. Ex: 'maf>0.05' or 'p<=0.01'",
+      "class": "string",
+      "optional": true,
+      "default": "p>0"
+    },
+    {
+      "name": "mh_color",
+      "label": "Vector of colors, either by color name or 6-digit hex value.",
+      "class": "array:string",
+      "optional": true,
+      "default": [
+        "gray50",
+        "black"
+      ]
+    },
+    {
+      "name": "main_title",
+      "label": "main: The title of the Manhattan plot.",
+      "class": "string",
+      "optional": true,
+      "default": "Manhattan Plot"
+    },
+    {
+      "name": "suggestive_line",
+      "label": "Where to draw a 'suggestive' line. Default -log10(1e-5). Set to 'FALSE' to disable.",
+      "class": "string",
+      "optional": true,
+      "default": "-log10(1e-5)"
+    },
+    {
+      "name": "genomewide_line",
+      "label": "Where to draw a 'genome-wide significant' line. Default -log10(5e-8). Set to 'FALSE' to disable.",
+      "class": "string",
+      "optional": true,
+      "default": "-log10(5e-8)"
+    },
+    {
+      "name": "highlight",
+      "label": "Highlighted Areas: A list of names from your 'gene' column to highlight, for example 'gene1,gene2,gene3'",
+      "class": "array:string",
+      "optional": true,
+      "default": [
+        "NULL"
+      ]
+    },
+    {
+      "name": "logp",
+      "label": "logp: If TRUE, the -log10 of the p-value is plotted. It isn't very useful to plot raw p-values, but plotting the raw value could be useful for other genome-wide plots, for example, peak heights, bayes factors, test statistics, other 'scores', etc.",
+      "class": "string",
+      "optional": true,
+      "default": "TRUE"
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "mhplot",
+      "label": "Output Manhattan plot",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "process": {
+        "instanceType": "mem3_ssd1_x4"
+      },
+      "main": {
+        "instanceType": "mem3_ssd1_x4"
+      },
+      "*": {
+        "instanceType": "mem3_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  },
+  "access": {
+    "project": "CONTRIBUTE",
+    "allProjects": "CONTRIBUTE",
+    "network": [
+      "*"
+    ]
+  }
+}
