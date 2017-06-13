@@ -1,0 +1,168 @@
+{
+  "document_name": "Analysis Common App: Manhattan Plot",
+  "app_name": "app_mhplot.json",
+  "maintainer": "",
+  "maintainer_email": "",
+  "location": "Common_Tools/",
+  "summary": "",
+  "tags": [""],
+  "version": "",
+  "introSpec": {
+	  "app_purpose": "",
+	  "app_use_cases": "",
+	  "app_requirements": "",
+	  "app_output": "",
+	  "app_how_does_it_work": ""
+	},
+  "inputSpec": [
+    {
+      "common": [
+        {
+          "name": "datafile",
+          "class": "array:file",
+          "label": "",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "snpinfofile",
+          "class": "array:file",
+          "label": "",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "label",
+          "class": "string",
+          "label": "Filename prefix label",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "output_type",
+          "class": "string",
+          "label": "The filetype of the output plot. Must choose 'png', 'tiff', or 'pdf'",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "p_col",
+          "class": "string",
+          "label": "P-value column name. Must be the same if plotting multiple datasets (e.g. merging chromosomes)",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "gene_col",
+          "class": "string",
+          "label": "Gene column name. Not currently used",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "chr_col",
+          "class": "string",
+          "label": "Chromosome column name. If missing, script will derive it from snpname if the format is CHR:POS",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "pos_col",
+          "class": "string",
+          "label": "Position column name. If missing, script will derive it from snpname if the format is CHR:POS.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "snp_col",
+          "class": "string",
+          "label": "SNPname column name.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "chr_labels",
+          "class": "string",
+          "label": "	chr_labels: A character vector equal to the number of chromosomes specifying the chromosome labels (e.g., 'c(1:22, 'X', 'Y', 'MT')')",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "filter",
+          "class": "string",
+          "label": "filter: Filtering string to subset the data. Ex: 'maf>0.05' or 'p<=0.01'",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "mh_color",
+          "class": "array:string",
+          "label": "Vector of colors, either by color name or 6-digit hex value.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "main_title",
+          "class": "string",
+          "label": "main: The title of the Manhattan plot.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "suggestive_line",
+          "class": "string",
+          "label": "Where to draw a 'suggestive' line. Default -log10(1e-5). Set to 'FALSE' to disable.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "genomewide_line",
+          "class": "string",
+          "label": "Where to draw a 'genome-wide significant' line. Default -log10(5e-8). Set to 'FALSE' to disable.",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "highlight ",
+          "class": "array:string",
+          "label": "Highlighted Areas: A list of names from your 'gene' column to highlight, for example 'gene1,gene2,gene3'",
+          "optional": "False",
+          "details": ""
+        },
+        {
+          "name": "logp",
+          "class": "string",
+          "label": "	logp: If TRUE, the -log10 of the p-value is plotted. It isn't very useful to plot raw p-values, but plotting the raw value could be useful for other genome-wide plots, for example, peak heights, bayes factors, test statistics, other 'scores', etc.",
+          "optional": "False",
+          "details": ""
+        },
+      ]
+    },
+    {
+      "advanced": [
+	    {
+          "name": "",
+		  "class": "",
+		  "label": "",
+		  "optional": "False",
+		  "details": ""
+	    }
+	  ]
+    }
+  ],
+  "outputSpec": [
+    {
+    {
+      "name": "mhplot",
+	  "class": "file",
+	  "label": "",
+	  "details": ""
+    }	
+  ],
+  "runSpec": {
+    "details": ""
+  },
+  "cmdLineSpec": {
+    "details": ""
+  }
+}
